@@ -1,0 +1,141 @@
+body {
+  background-color: #070b34;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  background-image: radial-gradient(#855988, #483475, #070b34);
+}
+
+#edithead, #previewhead {
+  position: relative;
+  font-family: Oregano;
+  font-size: 20px;
+  color: white;
+  background-color: steelblue;
+  margin: 0px;
+  padding-left: 8px;
+}
+
+#edithead {
+  width: 280px;
+}
+
+button {
+  margin-bottom: 25px;
+  width: 280px;
+  margin-top: 2px;
+  padding: 0px;
+  border: 2px solid silver;
+}
+button:hover {
+  cursor: pointer;
+}
+
+/* setting image size to display correctly*/
+img {
+  max-width: 100%;
+}
+
+blockquote {
+  border-left: 3px solid green;
+  background-color: white;
+  padding: 5px 10px 0px 10px;
+  margin-left: 20px;
+}
+
+code {
+  background-color: slategrey;
+  color: white;
+  padding: .25vw .5vw;
+  border-radius: 2px;
+}
+
+/*  making the function background display in block
+    try removing it to see the difference */
+pre code {
+  display: inline-block;
+  background-color: dimgray;
+}
+
+
+
+/*
+For styling of code blocks
+everything below
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+  color: #c678dd;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: #e06c75;
+}
+
+.hljs-literal {
+  color: #56b6c2;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string {
+  color: #98c379;
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: #e6c07b;
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+  color: #d19a66;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: #61aeee;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}

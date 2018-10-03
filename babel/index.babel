@@ -1,0 +1,145 @@
+// this is for optional tests
+// open link in new tab
+// previewer interprets carriage returns and renders them as br (line break) elements.
+// also added color styling for code block
+
+var renderer = new marked.Renderer();
+
+renderer.link = function(href, title, text) {
+  return `<a href=${href} target="_blank">${text}</a>`
+}
+
+marked.setOptions({
+  renderer,
+  breaks: true,
+  sanitize: true, //to make the markdown input secure
+  highlight: function(code) {
+    return hljs.highlightAuto(code).value
+  }
+})
+
+
+
+const textareaStyles = {
+  width: 280,
+  height: 400,
+  border: "2px solid teal",
+  fontSize: 12,
+  marginBottom: -7
+}
+
+const previewStyles = {
+  backgroundColor: "lavender",
+  border: "2px solid mediumspringgreen",
+  fontFamily: "Harmattan",
+  padding: "5px 15px",
+}
+
+class MyApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      markdown: placeholder
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleChange(event) {
+    this.setState({
+      markdown: event.target.value
+    });
+  }
+  
+  handleClick() {
+    this.setState({
+      markdown: ''
+    });
+  }
+  
+  
+  render() {
+    return (
+      <div className="row">
+        <div className="col-md-5">
+          <h2 id="edithead">Editor</h2>
+          <textarea id="editor" value={this.state.markdown} onChange={this.handleChange} style={textareaStyles}></textarea>
+          <button onClick={this.handleClick}>Clear text</button>
+        </div>
+        <div className="col-md-7">
+          <h2 id="previewhead">Preview</h2>
+          <div id="preview" dangerouslySetInnerHTML={{__html: marked(this.state.markdown)}} style={previewStyles}></div>
+        </div>
+      </div>
+    
+    );
+  }
+}
+
+
+const placeholder =
+`# Markdown Previewer
+---
+## Final Fantasy XI Online
+---
+![alt text][logo]
+
+[logo]: https://upload.wikimedia.org/wikipedia/en/0/01/Final_Fantasy_XI_logo.png "copyright Square Enix"
+
+[The FFXI wikipedia](https://en.wikipedia.org/wiki/Final_Fantasy_XI)  
+
+##### Gameplay
+Final Fantasy XI is a massively multiplayer online role-playing game (MMORPG) by Square Enix. Players choose from one of five races and explore the game in a fully three-dimensional landscape with enemies freely roaming in it, allowing battles to occur in real time.
+
+---
+##### Races
+1. Elvaan
+2. Hume
+1. Galka
+4. Mithra
+5. Tarutaru
+---
+##### Jobs
+- Warrior
+- Thief
+- Monk
+- Black Mage
+- White Mage
+- Red Mage
+---
+##### Advanced Jobs
+* Ninja, Samurai, Ranger, Summoner, etc  
+---
+##### NPC Introduction
+##### **_Shantotto_**  
+Job: \`Black Mage\`  
+Secondary: \`White Mage\`  
+Level: \`99\`  
+
+---
+#### Abilities:
+\`\`\`
+function Vortex() {
+  if (target === true) {
+    target.hp = target.hp - mag*20*crit; 
+  }
+  reset ATB;
+}
+var number = Math.floor(Math.random());
+\`\`\`
+
+---
+
+#### Famous Quotes
+> Ohohohohoho! My powers of destruction require no introduction!
+> -- Shantotto
+
+![alt text](https://vignette.wikia.nocookie.net/finalfantasy/images/e/e4/Shantotto_%28FFXI%29.png/revision/latest?cb=20110407134252)
+
+---
+\`All rights reserved Square Enix\`
+\`Just another FCC assignment\`
+`
+
+
+ReactDOM.render(<MyApp />, document.getElementById('preview-window'));
